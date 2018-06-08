@@ -1,0 +1,54 @@
+version: '3.2'
+
+services:
+    
+    db:
+        image: mongo:3.6.3
+        volumes: 
+            - ./data:/data/db
+        ports:
+            - "27017:27017"
+
+    costo:
+        image: node:10.3.0
+        volumes: 
+            - ./costo:/home/code
+        working_dir: /home/code
+        environment:
+            - NODE_ENV=dev
+        ports:
+            - "8080:3000"
+        command: bash -c "npm install && npm start"
+    
+    asignacion:
+        image: node:10.3.0
+        volumes: 
+            - ./asignacion:/home/code
+        working_dir: /home/code
+        environment:
+            - NODE_ENV=dev
+        ports:
+            - "8081:3000"
+        command: bash -c "npm install && npm start"
+
+    generador:
+        image: node:10.3.0
+        volumes: 
+            - ./generador:/home/code
+        working_dir: /home/code
+        environment:
+            - NODE_ENV=dev
+        ports:
+            - "8082:3000"
+        command: bash -c "npm install && npm start"
+
+    estado:
+        image: node:10.3.0
+        volumes: 
+            - ./estado:/home/code
+        working_dir: /home/code
+        environment:
+            - NODE_ENV=dev
+        ports:
+            - "8083:3000"
+        command: bash -c "npm install && npm start"
