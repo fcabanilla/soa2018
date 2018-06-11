@@ -46,6 +46,9 @@ services:
         command: bash -c "npm install && npm start"
 
     estado:
+        links:
+            - db
+            - db:database
         image: node:10.3.0
         volumes:
             - ./estado:/home/code
