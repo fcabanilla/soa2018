@@ -16,10 +16,9 @@ var EnvioSchema = mongoose.Schema({
   trackID: String,
   estado_actual: String,
   url_notificacion: String,
-  estados: [{
-    estado: String,
-    fecha: Date
-  }]
+  estados: {
+      type: mongoose.Schema.ObjectId, ref: 'Estado'
+  }
 });
 
 module.exports = mongoose.model('Envio', EnvioSchema)
